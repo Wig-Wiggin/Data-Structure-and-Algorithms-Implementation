@@ -9,6 +9,10 @@ public class ListNode {
     }
 
     public void setListNode(ListNode listNode)  {
+        if (listNode == null){  //** making last node
+            this.listNode =null;
+            return;
+        }
         if(this.hashCode() == listNode.hashCode()){
             System.out.println("can't reference itself.");
             return;

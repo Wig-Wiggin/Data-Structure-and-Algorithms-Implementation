@@ -17,6 +17,13 @@ public class MainTest {
         list.add(node4);
         list.addFirst(firstAdd);
         list.display();
+        list.deleteFirst();
+        list.display();
+        list.addLast(new ListNode(12));
+        list.display();
+        list.deleteLast();
+        list.display();
+
 
     }
 }
