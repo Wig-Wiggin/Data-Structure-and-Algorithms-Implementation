@@ -1,6 +1,7 @@
 package recursive;
 
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class Recursive {
 
@@ -60,16 +61,23 @@ public class Recursive {
         return x > y ? GCD(x%y,y) : GCD(y%x,x);
     }
 
-    public static void main(String[] args) {
-//        System.out.print("0 1 ");
-//        fibonacci(1,1,8);
+    private static void towerOfHanoi(int disk,char from,char to, char via){
+        if(disk == 1){
+            System.out.printf("Move disk 1 from rod %c to rod %c%n",from,to);
+        }else {
+            towerOfHanoi(disk-1,from,via,to);
+            System.out.printf("Move disk %d from rod %c to rod %c%n",disk,from,via);
+            towerOfHanoi(disk-1,via,to,from);
+        }
+    }
 
-//        System.out.println(sumDigits(123456789));
-//        System.out.println(power(2,10));
-//        System.out.println(Math.pow(2,10));
-        System.out.println(LocalDateTime.now().getNano());
-        System.out.println(GCD(75,75));
-        System.out.println(LocalDateTime.now().getNano());
+
+
+    
+
+    public static void main(String[] args) {
+        towerOfHanoi(4,'A','B','C');
+
     }
 
 }
