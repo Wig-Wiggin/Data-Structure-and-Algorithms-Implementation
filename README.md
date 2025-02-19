@@ -1,5 +1,1 @@
-Done 
-LinkList (singlely)
-Stack
-Queue
-practise some recursive methods 
+Implementing most used data structure and learing basic algorithms
