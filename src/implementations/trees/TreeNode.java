@@ -62,6 +62,7 @@ package implementations.trees;
 //}
 
 
+import java.util.Objects;
 
 public class TreeNode{
 
@@ -124,4 +125,15 @@ public class TreeNode{
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        TreeNode treeNode = (TreeNode) o;
+        return data == treeNode.data;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(data);
+    }
 }

@@ -37,9 +37,51 @@ public class BinarySearchTree {
     }
 
 
+    public TreeNode search(int data) {return searchTraversal(root,data);}
 
-public TreeNode search(int data) {
+    ///  NOT FINISH YET
+    private void removeTraversal(TreeNode pointerNode,int data){
+        if(pointerNode == null)return ;
 
-    return searchTraversal(root,data);
-}
+        if(pointerNode.getData() == data){
+
+            TreeNode parentNode = pointerNode.getParentNode();
+
+            // if removalNode doesn't have both left and right child
+            if(pointerNode.getLeftNode() == null && pointerNode.getRightNode() == null){
+
+                if(parentNode.getLeftNode() != null && parentNode.getLeftNode().equals(pointerNode)){
+                    parentNode.setLeftNode(null);
+                    pointerNode.setParentNode(null);
+                } else if (parentNode.getRightNode() != null && parentNode.getRightNode().equals(pointerNode)) {
+                    parentNode.setRightNode(null);
+                    pointerNode.setParentNode(null);
+                }
+
+            }else if (pointerNode.getRightNode() != null){
+                if(parentNode.getRightNode() != null && parentNode.getRightNode().equals(pointerNode)){
+                    if(pointerNode.getRightNode() != null){
+                        TreeNode node = pointerNode.getRightNode();
+                        while (true){
+                            if(node.getLeftNode() == null)break;
+                            node = node.getLeftNode();
+                        }
+                        System.out.println(node.nodeInfo());
+                    }
+                } else if (parentNode.getLeftNode() != null && parentNode.getLeftNode().equals(pointerNode)) {
+
+                }
+            }
+
+        }
+
+
+
+    }
+
+    public void remove(int data){
+
+         removeTraversal(root,data);
+    }
+
 }
