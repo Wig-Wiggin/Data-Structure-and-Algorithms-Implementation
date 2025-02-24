@@ -16,6 +16,11 @@ public class Main {
         tree.add(17);
         tree.add(16);
         tree.add(24);
+        tree.add(1);
+        tree.add(99);
+        tree.remove(1);
+        System.out.println(tree.size());
+        System.out.println(tree.height());
 
 
 
@@ -25,11 +30,11 @@ public class Main {
 //        System.out.println(tree.search(16).nodeInfo());
 //        System.out.println(tree.search(18).nodeInfo());
 
-        tree.remove(10);
-        TreeNode result = tree.search(10);
-        System.out.println(result != null ? result : "not found (removed successfully)");
-
-        System.out.println(tree.getRoot().nodeInfo());
+//        tree.remove(10);
+//        TreeNode result = tree.search(10);
+//        System.out.println(result != null ? result : "not found (removed successfully)");
+//
+//        System.out.println(tree.getRoot().nodeInfo());
 
 //        System.out.println(tree.search(12).nodeInfo());
 //        System.out.println("--------------");
