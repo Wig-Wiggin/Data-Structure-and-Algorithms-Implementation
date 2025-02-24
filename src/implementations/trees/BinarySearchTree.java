@@ -4,9 +4,12 @@ public class BinarySearchTree {
 
     private final TreeNode root;
 
+
     public BinarySearchTree(int data) {
         root = new TreeNode(data);
     }
+
+    public TreeNode getRoot(){return  root;}
 
     private void addTraversal(TreeNode pointerNode, TreeNode treeNode) {
         if (pointerNode.getData() > treeNode.getData() && pointerNode.getLeftNode() == null) {
@@ -37,51 +40,83 @@ public class BinarySearchTree {
     }
 
 
-    public TreeNode search(int data) {return searchTraversal(root,data);}
+    public TreeNode search(int data) {
+        return searchTraversal(root, data);
+    }
 
-    ///  NOT FINISH YET
-    private void removeTraversal(TreeNode pointerNode,int data){
-        if(pointerNode == null)return ;
 
-        if(pointerNode.getData() == data){
+    public void remove(int data) {
 
-            TreeNode parentNode = pointerNode.getParentNode();
+        TreeNode pointerNode = searchTraversal(root, data);
 
-            // if removalNode doesn't have both left and right child
-            if(pointerNode.getLeftNode() == null && pointerNode.getRightNode() == null){
+        if (pointerNode == null) return;
 
-                if(parentNode.getLeftNode() != null && parentNode.getLeftNode().equals(pointerNode)){
+        TreeNode parentNode = pointerNode.equals(root) ? null :  pointerNode.getParentNode();
+
+
+        //if removal node is root
+        if(parentNode == null){
+            TreeNode node = pointerNode.getRightNode();
+
+            while (node.getLeftNode() != null) {
+                node = node.getLeftNode();
+            }
+            pointerNode.setData(node.getData());
+            return;
+        }
+
+
+            // if removal node doesn't have any child in both left and right node
+            if (pointerNode.getLeftNode() == null && pointerNode.getRightNode() == null) {
+
+                if (parentNode.getData() > pointerNode.getData()) {
                     parentNode.setLeftNode(null);
                     pointerNode.setParentNode(null);
-                } else if (parentNode.getRightNode() != null && parentNode.getRightNode().equals(pointerNode)) {
+                } else {
                     parentNode.setRightNode(null);
                     pointerNode.setParentNode(null);
                 }
 
-            }else if (pointerNode.getRightNode() != null){
-                if(parentNode.getRightNode() != null && parentNode.getRightNode().equals(pointerNode)){
-                    if(pointerNode.getRightNode() != null){
-                        TreeNode node = pointerNode.getRightNode();
-                        while (true){
-                            if(node.getLeftNode() == null)break;
-                            node = node.getLeftNode();
-                        }
-                        System.out.println(node.nodeInfo());
-                    }
-                } else if (parentNode.getLeftNode() != null && parentNode.getLeftNode().equals(pointerNode)) {
 
+                // if removal node only have child in left node
+            } else if (pointerNode.getLeftNode() != null && pointerNode.getRightNode() == null) {
+
+                TreeNode treeNode = pointerNode.getLeftNode();
+
+                if (parentNode.getData() > pointerNode.getData()) {
+                    parentNode.setLeftNode(treeNode);
+                    treeNode.setParentNode(parentNode);
+                } else {
+                    parentNode.setRightNode(treeNode);
+                    treeNode.setParentNode(parentNode);
+                }
+
+            } else if (pointerNode.getRightNode() != null && pointerNode.getLeftNode() == null) {
+
+                TreeNode treeNode = pointerNode.getRightNode();
+
+                if (parentNode.getData() > pointerNode.getData()) {
+                    parentNode.setLeftNode(treeNode);
+                    treeNode.setParentNode(parentNode);
+                } else {
+                    parentNode.setRightNode(treeNode);
+                    treeNode.setParentNode(parentNode);
                 }
             }
+            //if removal node have both left and right child nodes
+            else {
+                TreeNode node = pointerNode.getRightNode();
 
+                while (node.getLeftNode() != null) {
+                    node = node.getLeftNode();
+                }
+
+                pointerNode.setData(node.getData());
+                node.getParentNode().setLeftNode(null);
+
+
+            }
         }
 
-
-
-    }
-
-    public void remove(int data){
-
-         removeTraversal(root,data);
-    }
 
 }
