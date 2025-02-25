@@ -1,6 +1,4 @@
-package implementations.trees;
-
-import java.util.Objects;
+package implementations.trees.binarysearchtree;
 
 public class TreeNode{
 

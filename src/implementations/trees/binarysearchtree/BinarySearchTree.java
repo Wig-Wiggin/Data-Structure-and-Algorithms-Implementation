@@ -1,4 +1,4 @@
-package implementations.trees;
+package implementations.trees.binarysearchtree;
 
 
 //
