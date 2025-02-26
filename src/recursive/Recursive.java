@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Recursive {
 
-    private static int factorial(int number) {
+     static int factorial(int number) {
         if (number == 1) return 1;
         else {
             return number * factorial(number - 1);
@@ -13,7 +13,7 @@ public class Recursive {
     }
 
 
-    private static void fibonacci(int number) {
+     static void fibonacci(int number) {
 
         if (number < 0) return;
 
@@ -33,7 +33,7 @@ public class Recursive {
         System.out.println();
     }
 
-    private static void fibonacci(int x,int y,int number){
+     static void fibonacci(int x,int y,int number){
         if (number > 1) {
             int temp = x+y;
             System.out.print(temp+" ");
@@ -41,7 +41,7 @@ public class Recursive {
         }
     }
 
-    private static int sumDigits(int number){
+     static int sumDigits(int number){
         if(number < 10){
             return number;
         }else {
@@ -49,19 +49,19 @@ public class Recursive {
         }
     }
 
-    private static int power(int base,int expo){
+     static int power(int base,int expo){
         if(expo == 1)return base;
 
         return base * power(base,expo-1);
     }
 
-    private static int GCD(int x,int y){
+     static int GCD(int x,int y){
         if(x % y == 0) return y;
 
         return x > y ? GCD(x%y,y) : GCD(y%x,x);
     }
 
-    private static void towerOfHanoi(int disk,char from,char to, char via){
+     static void towerOfHanoi(int disk,char from,char to, char via){
         if(disk == 1){
             System.out.printf("Move disk 1 from rod %c to rod %c%n",from,to);
         }else {
@@ -71,13 +71,16 @@ public class Recursive {
         }
     }
 
-
-
-    
-
-    public static void main(String[] args) {
-        towerOfHanoi(4,'A','B','C');
-
+    private static  int sum(int[] arr, int pointer){
+        if(pointer == arr.length-1) return arr[pointer];
+        return arr[pointer] + sum(arr,++pointer);
     }
+
+     static int sum(int[] arr){
+        return sum(arr,0);
+    }
+
+
+
 
 }
