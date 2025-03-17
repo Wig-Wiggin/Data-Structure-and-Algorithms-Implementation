@@ -60,4 +60,57 @@ public class SortingAlgorithms {
 
         return qSortInternal(temp);
     }
+
+    public static int[] bubbleSort(int[] array){
+        if(array.length <= 1)return array;
+
+        int[] arr = Arrays.copyOf(array,array.length);
+        for(int x = 0 ; x < arr.length; x ++){
+            for (int i = 0,j = 1; j < arr.length;i++,j++){
+                if(arr[i] > arr[j]){
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+        return arr;
+    }
+
+
+
+    private static int[] sort(int[] arr){
+        if(arr[0] == arr[1]){
+            return arr;
+        }else if(arr[0] > arr[1]){
+            int temp = arr[0];
+            arr[0] = arr[1];
+            arr[1] = temp;
+            return arr;
+        }
+        return arr;
+    }
+
+//    private static int[] mergeSort(int[] arr, int start,int end){
+//        if(arr.length == 2){
+//            return sort(arr);
+//        }
+//        int mid = start+end/2;
+//
+//        int[] x = Arrays.copyOfRange(arr,start,mid);
+//        int[] y = Arrays.copyOfRange(arr,mid+1,end);
+//
+//    }
+//    public static int[] mergeSort(int[] arr){
+//
+//        int start = 0;
+//        int end = arr.length-1;
+//        int mid = start+end/2;
+//
+//        int[] x = Arrays.copyOfRange(arr,start,mid);
+//        int[] y = Arrays.copyOfRange(arr,mid+1,end);
+//
+//    }
+
 }
