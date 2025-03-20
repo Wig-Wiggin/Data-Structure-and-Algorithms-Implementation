@@ -1,6 +1,6 @@
 package implementations.stack;
 
-import implementations.linkedList.LinkedList;
+import implementations.linkedList.linkedListV_1.LinkedList;
 
 public class DynamicsStack<T> {
 
